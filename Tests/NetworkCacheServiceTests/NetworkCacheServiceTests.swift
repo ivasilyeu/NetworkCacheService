@@ -3,13 +3,13 @@ import XCTest
 
 final class NetworkCacheServiceTests: XCTestCase {
 
-    let dependencies: NetworkCacheServiceFactoryProtocol = DependencyFactory()
+    let dependencies: NetworkCacheServiceFactoryProtocol = MockDependencyFactory()
     lazy var cache = dependencies.networkCacheService
 
     func testThatStringCacheUncacheWorks() throws {
 
         let item = "test"
-        let url = URL(string: "https://google.com")! //URL(string: UUID().uuidString)!
+        let url = URL(string: "https://google.com")!
         let mockedResponse = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)!
 
         cache.cacheItem(item,
@@ -24,8 +24,3 @@ final class NetworkCacheServiceTests: XCTestCase {
         XCTAssertEqual(uncachedItem, item, "cached and uncached items must be equal")
     }
 }
-
-
-
-
-
