@@ -1,14 +1,14 @@
 `NetworkCacheService` is a simple URL load caching service that allows to directly cache responses without having to rely on predetermined URLSession caching strategies.
 
-##Features
+## Features
 
 - Expiration policies support
 - Disk and memory storage
 - Full thread safety
 
-##Usage
+## Usage
 
-###Caching of network response models:
+### Caching of network response models:
 
 ```swift
 URLSession.shared.dataTask(with: url) { [cacheService] data, response, error in
@@ -26,7 +26,7 @@ URLSession.shared.dataTask(with: url) { [cacheService] data, response, error in
 }.resume()
 ```
 
-###Reading of previously cached models:
+### Reading of previously cached models:
 
 ```swift
 let modelOrNil = cacheService.readItem(of: ResponseNetworkModel.self, for: url)
